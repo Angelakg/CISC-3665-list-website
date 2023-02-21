@@ -1,66 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
+<head>
+	<!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <!-- Original CSS -->
+    <link rel="stylesheet" href="styles/style.css">
 
     <title>My List</title>
-  </head>
-  <body>
-    <h1 class="container">My List</h1>
-
-    <ul class="list-group list-group-flush container">
-      <li class="list-group-item">
-          <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
-          <input type="date"> 
-          <br>
-          <input class="d-inline-flex p-2 " type="text" value="Some text..."> 
-      </li>
-      <li class="list-group-item">
-          <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
-          <input type="date"> 
-          <br>
-          <input class="d-inline-flex p-2 " type="text" value="Some text..."> 
-      </li>
-      <li class="list-group-item">
-          <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
-          <input type="date"> 
-          <br>
-          <input class="d-inline-flex p-2 " type="text" value="Some text..."> 
-      </li>
-      <li class="list-group-item">
-          <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
-          <input type="date"> 
-          <br>
-          <input class="d-inline-flex p-2 " type="text" value="Some text..."> 
-      </li>
-      <li class="list-group-item">
-          <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
-          <input type="date"> 
-          <br>
-          <input class="d-inline-flex p-2 " type="text" value="Some text..."> 
-      </li>
-      <li class="list-group-item"> 
-        <br>
-        <button type="button" class="btn btn-primary">Add</button>
-      </li>
-
-  </ul>
+</head>
+<body>
+	<h1 class="text-center my-3 pb-3">To Do List</h1>
+  	<form class="row row-cols-lg-auto g-3 justify-content-center align-items-center mb-4 pb-2">
+  		<div class="col-12">
+  			<!-- Select Task Color -->
+  			<select class="d-inline-flex p-2" id="colorpick">
+  				<option value="">Select task color </option>
+			    <option value="violet">Violet</option>
+			    <option value="pink">Pink</option>
+			    <option value="lightgreen">Light Green</option>
+			    <option value="lightyellow">Light Yellow</option>
+			</select>
+  		</div>
+  		<div class="col-12">
+  			<!-- Task Input Box -->
+  			<div class="form-outline">
+  				<input class="d-inline-flex p-2 " type="text" value="Enter Task..." id="newTask"> 
+  			</div>
+  		</div>
+  		<div class="col-12">
+  			<!-- Date Input Box -->
+  			<input class="d-inline-flex p-2 " type="date" id="dateInput"> 
+  		</div>
+  		<div class="col-12">
+  			<!-- Add Button -->
+  			<button onclick="addItem()" type="button" class="btn btn-primary container">Add</button>
+  		</div>
+  	</form>
 
 
-    <!-- Optional JavaScript; choose one of the two! -->
-    <script src="scripts/myscripts.js"></script>
+    <ul class="list-group list-group-flush container nav" id="list">
+    	<li class="list-group-item d-flex justify-content-between align-items-center rounded-0 mb-2 selected" style="background-color:lightyellow;">
+    		<div class="d-flex align-items-center">
+    			<!-- Checkbox -->
+    			<input class="form-check-input me-3" type="checkbox" aria-label="..." onclick="sound()" id="check">
+    			<!-- Task -->
+    			<p class="lead fw-normal text-center mx-3 mb-0"> 
+    				This is an example task :D
+    			</p>
+    		</div>
+    		<div class="d-flex align-items-center">
+    			<!-- Date -->
+    			<p class="lead fw-normal text-center mx-3 mb-0"> 
+    				05/13/23
+    			</p>
+    			<!-- Delete Button -->
+    			<button onclick="removeItem()" type="button" class="btn btn-danger" id="delete"> Delete </button>
+    		</div>
+    	</li>
+
+
+    	<li class="list-group-item d-flex justify-content-between align-items-center rounded-0 mb-2 selected" style="background-color:violet;">
+    		<div class="d-flex align-items-center">
+    			<!-- Checkbox -->
+    			<input class="form-check-input me-3" type="checkbox" aria-label="..." onclick="sound()" id="check">
+    			<!-- Task -->
+    			<p class="lead fw-normal text-center mx-3 mb-0"> 
+    				This is another an example task :)
+    			</p>
+    		</div>
+    		<div class="d-flex align-items-center">
+    			<!-- Date -->
+    			<p class="lead fw-normal text-center mx-3 mb-0"> 
+    				06/30/23
+    			</p>
+    			<!-- Delete Button -->
+    			<button onclick="removeItem()" type="button" class="btn btn-danger" id="delete"> Delete </button>
+    		</div>
+    	</li>
+    </ul>
+        
+
+    <!-- Optional JavaScript; -->
+    <script src="scripts/main.js"></script>
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
-    <!-- Option 2: Separate Popper and Bootstrap JS -->
-    <!--
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
-    -->
-  </body>
+</body>
 </html>
